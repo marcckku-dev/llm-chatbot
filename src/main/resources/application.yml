@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: llm-chatbot
+  datasource:
+    url: jdbc:h2:mem:chatbotdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  port: 8581
+  servlet:
+    context-path: /api
+
+logging:
+  file:
+    name: logs/llm-chatbot.log
+  level:
+    com.opencode.chatbot: INFO
+
+# LLM Configuration
+ollama:
+  url: http://localhost:11434
+  model: mistral
+  timeout: 30000
